@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<info>
+	<id>openproject-nextcloud-app</id>
+	<name>openproject-nextcloud-app</name>
+	<summary>Summer for openproject-nextcloud-app</summary>
+	<description>
+	<![CDATA[Description for openproject-nextcloud-app]]>
+	</description>
+	<version>1.0.0</version>
+	<licence>MIT</licence>
+	<author mail="info@jankaritech.com" homepage="https://github.com/jankaritech">JankariTech</author>
+	<namespace>openproject</namespace>
+	<category>tools</category>
+	<website>https://github.com/JankariTech/openproject-nextcloud-app</website>
+	<bugs>https://github.com/JankariTech/openproject-nextcloud-app/issues</bugs>
+	<repository type="git">https://github.com/JankariTech/openproject-nextcloud-app</repository>
+	<dependencies>
+		<nextcloud min-version="27" max-version="30"/>
+	</dependencies>
+	<external-app>
+		<docker-install>
+			<registry>ghcr.io</registry>
+			<image>cloud-py-api/openproject-nextcloud-app</image>
+			<image-tag>latest</image-tag>
+		</docker-install>
+		<scopes>
+		</scopes>
+		<system>false</system>
+	</external-app>
+</info>
