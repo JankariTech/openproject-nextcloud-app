@@ -9,7 +9,7 @@ Assuming you’re in the apps folder of Nextcloud with command git:
 
 - Clone
 	```bash
-	https://github.com/cloud-py-api/app_api.git
+	git clone https://github.com/cloud-py-api/app_api.git
 	```
 - build
    ```bash
@@ -52,7 +52,7 @@ Assuming you’re in the apps folder of Nextcloud with command git:
 
 - Clone
   ```bash
-  https://github.com/JankariTech/openproject-nextcloud-app.git
+  git clone https://github.com/JankariTech/openproject-nextcloud-app.git
   ```
 - Configure script before running external app
    ```bash
@@ -78,7 +78,7 @@ Assuming you’re in the apps folder of Nextcloud with command git:
    bash ex_app_run_script.sh
     ```
 
-### 2. Register and deploy external application `openproject-nextcloud-app` in Nextcloud's external apps
+### 5. Register and deploy external application `openproject-nextcloud-app` in Nextcloud's external apps
 
 Assuming you’re in nextcloud server root directory
 
@@ -97,7 +97,7 @@ Assuming you’re in nextcloud server root directory
   	\"headers_to_exclude\":[]}]}" \
     --force-scopes --wait-finish
   ```
-  In the above bash command use the same value for `EX_APP_ID`, `EX_APP_VERSION`, `APP_SECRET`, and `APP_PORT` used while running external applicaiton `openproject-nextcloud-app`
+  In the above bash command use the same value for `EX_APP_ID`, `EX_APP_VERSION`, `APP_SECRET`, and `APP_PORT` used while running external app `openproject-nextcloud-app`
 
 
 Upon successful running , register and deploy of the external application `openproject-nextcloud-app`, the external application can be accessed with the url:
