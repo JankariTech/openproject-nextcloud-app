@@ -113,7 +113,7 @@ async def proxy_request_to_server(request: Request, path: str):
                 headers=headers,
             )
         else:
-            # for getting oauth token the content-type 'application/x-www-form-urlencoded' sems to be required
+            # for getting oauth token the content-type 'application/x-www-form-urlencoded' seems to be required
             if request.method == 'POST' and "/oauth/token" in url:
                 headers.update({'content-type': 'application/x-www-form-urlencoded'})
             response = await client.request(
@@ -132,10 +132,10 @@ async def proxy_request_to_server(request: Request, path: str):
                 response.headers["location"] = redirect_url
                 response.status_code = 200
             elif "oauth/authorize" in url:
-                response.headers["location"] = response.headers["location"]
+                return response
             elif "apps/oauth2/authorize" in response.headers["location"]:
-                response.headers["location"] = response.headers["location"]
                 response.status_code = 200
+                return response
             else:
                 headers["content-length"] = "0"
                 response = await handle_redirects(

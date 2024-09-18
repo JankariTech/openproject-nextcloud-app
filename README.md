@@ -5,11 +5,11 @@ For the manual installation of `OpenProject` as an external application of `Next
 
 ### 1. Install `app_api` application
 
-Assuming you’re in the apps folder of Nextcloud with command git:
+Assuming you’re in the apps folder directory:
 
 - Clone
 	```bash
-	git clone https://github.com/cloud-py-api/app_api.git
+	git clone https://github.com/nextcloud/app_api.git
 	```
 - build
    ```bash
@@ -17,7 +17,6 @@ Assuming you’re in the apps folder of Nextcloud with command git:
    npm ci && npm run dev
     ```
 - Enable the `app_api`
-
 	```bash
 	# Assuming you’re in nextcloud server root directory
 	sudo -u www-data php occ a:e app_api
@@ -26,7 +25,7 @@ Assuming you’re in the apps folder of Nextcloud with command git:
 ### 2. Register deploy daemons (In Nextcloud)
 
 - Navigate to `Administration Settings > AppAPI`
-- Click register daemons
+- Click `Register Daemon`
 - Select `Manual Install` for Daemon configuration template
 - Put `manual_install` for name and display name
 - Deployment method as `manual-install`
@@ -40,15 +39,13 @@ After the setup, run `OpenProject` locally with the given command line.
 >NOTE: while running the below bash command line for `NC_SUB_FOLDER` put the sub folder path if you are running nextcloud in a sub folder else do remove it.
 
 ```bash
-OPENPROJECT_AUTHENTICATION_GLOBAL__BASIC__AUTH_USER=apiadmin \
-OPENPROJECT_AUTHENTICATION_GLOBAL__BASIC__AUTH_PASSWORD=apiadmin \
+# the reason to set relative path with NC_SUB_FOLDER is it makes easy to change when there is redirection url in response
 OPENPROJECT_RAILS__RELATIVE__URL__ROOT=/<NC_SUB_FOLDER>/index.php/apps/app_api/proxy/openproject-nextcloud-app \
-OPENPROJECT_2FA_DISABLED=false \
 foreman start -f Procfile.dev
 ```
 
 ### 4. Configure and Run External `openproject-nextcloud-app` application
-Assuming you’re in the apps folder of Nextcloud with command git:
+Assuming you’re in the apps folder directory:
 
 - Clone
   ```bash
@@ -56,8 +53,8 @@ Assuming you’re in the apps folder of Nextcloud with command git:
   ```
 - Configure script before running external app
    ```bash
-   cd openproject-nextcloud-app
-  cp ex_app_run_script.sh.example ex_app_run_script.sh
+	 cd openproject-nextcloud-app
+	 cp ex_app_run_script.sh.example ex_app_run_script.sh
     ```
   Once you have copied the script to run the external application, configure the following environments
 
@@ -72,6 +69,12 @@ Assuming you’re in the apps folder of Nextcloud with command git:
   - NC_SUB_FOLDER is the subfolder in which nextcloud is running (make sure to use same in OPENPROJECT_RAILS__RELATIVE__URL__ROOT while running openproject)
   - OP_BACKEND_URL is the url in which `OpenProject` is up and running
   - NEXTCLOUD_URL the url in which `Nextcloud` is up and running
+
+- Install required Python packages to run external application `openproject-nextcloud-app`
+	```bash
+	# Make sure that you have python3 installed in your local system
+	python3 -m pip install -r requirements.txt
+	```
 
 - Run external application with the script
    ```bash
