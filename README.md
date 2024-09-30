@@ -36,7 +36,7 @@ Assuming you’re in the apps folder directory:
 Set up and build `OpenProject` locally following [OpenProject Development Setup](https://www.openproject.org/docs/development/development-environment/)
 After the setup, run `OpenProject` locally with the given command line.
 
->NOTE: while running the below bash command line for `NC_SUB_FOLDER` put the sub folder path if you are running nextcloud in a sub folder else do remove it.
+>NOTE: If you are running Nextcloud in a sub folder  replace `NC_SUB_FOLDER` with the path name, otherwise remove it.
 
 ```bash
 # the reason to set relative path with NC_SUB_FOLDER is it makes easy to change when there is redirection url in response
@@ -58,17 +58,17 @@ Assuming you’re in the apps folder directory:
     ```
   Once you have copied the script to run the external application, configure the following environments
 
-  - APP_ID is the application id of the external app
-  - APP_PORT is port for the external app
-  - APP_HOST is the host for the external app
-  - APP_SECRET is the secret required for the communication between external app and nextcloud
-  - APP_VERSION is the version of external app
-  - AA_VERSION is the app_api version used
-  - EX_APP_VERSION is the version of external app
-  - EX_APP_ID is the application id of the external app
-  - NC_SUB_FOLDER is the subfolder in which nextcloud is running (make sure to use same in OPENPROJECT_RAILS__RELATIVE__URL__ROOT while running openproject)
-  - OP_BACKEND_URL is the url in which `OpenProject` is up and running
-  - NEXTCLOUD_URL the url in which `Nextcloud` is up and running
+  - `APP_ID` is the application id of the external app
+  - `APP_PORT` is port for the external app
+  - `APP_HOST` is the host for the external app
+  - `APP_SECRET` is the secret required for the communication between external app and nextcloud
+  - `APP_VERSION` is the version of external app
+  - `AA_VERSION` is the app_api version used
+  - `EX_APP_VERSION` is the version of external app
+  - `EX_APP_ID` is the application id of the external app
+  - `NC_SUB_FOLDER` is the subfolder in which nextcloud is running (make sure to use same in OPENPROJECT_RAILS__RELATIVE__URL__ROOT while running openproject)
+  - `OP_BACKEND_URL` is the url in which `OpenProject` is up and running
+  - `NEXTCLOUD_URL` the url in which `Nextcloud` is up and running
 
 - Install required Python packages to run external application `openproject-nextcloud-app`
 	```bash
@@ -100,10 +100,10 @@ Assuming you’re in nextcloud server root directory
   	\"headers_to_exclude\":[]}]}" \
     --force-scopes --wait-finish
   ```
-  In the above bash command use the same value for `EX_APP_ID`, `EX_APP_VERSION`, `APP_SECRET`, and `APP_PORT` used while running external app `openproject-nextcloud-app`
+  In the above bash command use the same value for `EX_APP_ID`, `EX_APP_VERSION`, `APP_SECRET`, and `APP_PORT` as used while running external app `openproject-nextcloud-app`
 
 
-Upon successful running , register and deploy of the external application `openproject-nextcloud-app`, the external application can be accessed with the url:
+Now OpenProject can be reached on:
 ```bash
 http://${APP_HOST}/${NC_SUB_FOLDER}/index.php/apps/app_api/proxy/openproject-nextcloud-app
 ```
