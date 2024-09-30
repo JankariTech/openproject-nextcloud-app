@@ -113,9 +113,6 @@ async def proxy_request_to_server(request: Request, path: str):
                 headers=headers,
             )
         else:
-            # for getting oauth token the content-type 'application/x-www-form-urlencoded' seems to be required
-            if request.method == 'POST' and "/oauth/token" in url:
-                headers.update({'content-type': 'application/x-www-form-urlencoded'})
             response = await client.request(
                 method=request.method,
                 url=url,
