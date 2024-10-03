@@ -1,0 +1,15 @@
+#!/bin/bash
+
+export APP_ID="openproject-nextcloud-app"
+export APP_PORT="9030"
+export APP_HOST="localhost"
+export APP_SECRET="<app-secret>"
+export APP_VERSION="<ex-app-version>"
+export AA_VERSION="<app-api-version>"
+export EX_APP_VERSION="<ex-app-version>"
+export EX_APP_ID="openproject-nextcloud-app"
+export NC_SUB_FOLDER="<nc-sub-folder-path>"
+export OP_BACKEND_URL="http://<openproject-host>:<openproject-port>/${NC_SUB_FOLDER}/index.php/apps/app_api/proxy/openproject-nextcloud-app"
+export NEXTCLOUD_URL="http://${APP_HOST}/${NC_SUB_FOLDER}/index.php"
+
+python3.10 lib/main.py
