@@ -62,8 +62,8 @@ Assuming you’re in the apps folder directory:
   - `APP_PORT` is port for the external app
   - `APP_HOST` is the host for the external app
   - `APP_VERSION` is the version of external app
-  - `APP_SECRET`  is a secret key used by Nextcloud to authenticate with external applications. Administrators can set any secret, but they must ensure that the same secret is used when both registering and running the external application.
-  - `AA_VERSION` indicates the version of app `app_api`. The external application needs this information because `app_api` is responsible for handling tasks like registration, authentication, and managing external apps. To see the version of `app_api`, list apps from the root directory of server with the command.
+  - `APP_SECRET` is a secret key used by Nextcloud to authenticate with external applications. Administrators can set any secret, but they must ensure that the same secret is used when registering and running the external application.
+  - `AA_VERSION` indicates the version of the `app_api` app. The external application needs this information because `app_api` is responsible for handling tasks like registration, authentication, and managing external apps. To get the version of `app_api`, list the apps using the CLI. To do that run this command in the root directory of server:
     ```bash
     sudo -u www-data php occ a:l
     ```
