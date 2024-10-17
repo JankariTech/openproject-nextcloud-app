@@ -61,14 +61,19 @@ Assuming you’re in the apps folder directory:
   - `APP_ID` is the application id of the external app
   - `APP_PORT` is port for the external app
   - `APP_HOST` is the host for the external app
-  - `APP_SECRET` is the secret required for the communication between external app and nextcloud
   - `APP_VERSION` is the version of external app
-  - `AA_VERSION` is the app_api version used
-  - `EX_APP_VERSION` is the version of external app
-  - `EX_APP_ID` is the application id of the external app
+  - `APP_SECRET` is a secret key used by Nextcloud to authenticate with external applications. Administrators can set any secret, but they must ensure that the same secret is used when registering and running the external application.
+  - `AA_VERSION` indicates the version of the `app_api` app. The external application needs this information because `app_api` is responsible for handling tasks like registration, authentication, and managing external apps. To get the version of `app_api`, list the apps using the CLI. To do that run this command in the root directory of server:
+    ```bash
+    sudo -u www-data php occ a:l
+    ```
+  - `EX_APP_VERSION` is the version of the external application and must be same as `APP_VERSION`
+  - `EX_APP_ID` is the version of the external application and must be same as `APP_ID`
   - `NC_SUB_FOLDER` is the subfolder in which nextcloud is running (make sure to use same in OPENPROJECT_RAILS__RELATIVE__URL__ROOT while running openproject)
   - `OP_BACKEND_URL` is the url in which `OpenProject` is up and running
   - `NEXTCLOUD_URL` the url in which `Nextcloud` is up and running
+
+    >***NOTE:***  In the given environments, `APP_ID`, `APP_PORT`, `APP_HOST`, and `APP_VERSION` are used to run the external application, while `APP_SECRET`, `EX_APP_VERSION`, `EX_APP_ID`, and `AA_VERSION` are needed for the external app and Nextcloud to authenticate each other.
 
 - Install required Python packages to run external application `openproject-nextcloud-app`
 	```bash
