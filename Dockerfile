@@ -1,15 +1,25 @@
-FROM python:3.11-slim-bookworm
+FROM openproject/openproject:14
+
+RUN apt update \
+    && apt install -y \
+    python3-pip \
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN mv /usr/lib/python3.11/EXTERNALLY-MANAGED /usr/lib/python3.11/EXTERNALLY-MANAGED.old
 
 COPY requirements.txt /
 
-RUN \
-  python3 -m pip install -r requirements.txt && rm -rf ~/.cache && rm requirements.txt
+RUN python3 -m pip install -r /requirements.txt \
+    && rm /requirements.txt
 
-ADD cs[s] /app/css
-ADD im[g] /app/img
-ADD j[s] /app/js
-ADD l10[n] /app/l10n
-ADD li[b] /app/lib
+COPY lib /lib
 
-WORKDIR /app/lib
-ENTRYPOINT ["python3", "main.py"]
+COPY docker/entrypoint.sh /entrypoint.sh
+
+EXPOSE 9030
+EXPOSE 80
+
+
+ENTRYPOINT ["bash"]
+CMD ["/entrypoint.sh"]
